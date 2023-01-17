@@ -15,6 +15,6 @@ my_build:
       - echo 'AAAAAAAARRGHHHHHHRRGHH!!!!!!!!!!!!!! 2'
     artifacts:
         paths:
-          - src/cat/s21_cat
-          - src/grep/s21_grep
+          - /src/cat/s21_cat
+          - /src/grep/s21_grep
         expire_in: 30 days
