@@ -31,5 +31,7 @@ my_style:
       - cd ../grep
     allow_failure: false
     after_script:
+      - cd src/cat
       - bash check_styletest_output.sh
+      - cd ../grep
       - bash check_styletest_output.sh
