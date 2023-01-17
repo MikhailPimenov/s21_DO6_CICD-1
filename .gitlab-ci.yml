@@ -1,5 +1,6 @@
 stages:
     - build
+    - style
 
 
 my_build:
@@ -7,14 +8,23 @@ my_build:
     tags: 
       - build
     script:
-      - echo 'AAAAAAAAAARRRGH!!!!! 1'
       - cd src/cat
       - make s21_cat
       - cd ../grep
       - make s21_grep
-      - echo 'AAAAAAAARRGHHHHHHRRGHH!!!!!!!!!!!!!! 2'
     artifacts:
         paths:
           - src/cat/s21_cat
           - src/grep/s21_grep
         expire_in: 30 days
+
+my_style:
+    stage: style
+    tags:
+      - cd src/cat
+      - make check
+      - cd ../grep
+      - make check
+    script:
+      - make check
+    allow_failure: false
