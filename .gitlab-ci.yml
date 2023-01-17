@@ -6,7 +6,7 @@ stages:
 my_build:
     stage: build
     tags: 
-      - build
+      - build_tag
     script:
       - cd src/cat
       - make s21_cat
@@ -21,7 +21,7 @@ my_build:
 my_style:
     stage: style
     tags:
-      - test
+      - style_tag
     script:
       - cd src/cat
       - make check
