@@ -27,8 +27,7 @@ my_style:
       - make check
       - cd ../grep
       - make check
-      - sleep 1
-      - cd ../cat
+      - cd src/cat
       - bash check_styletest_output.sh
       - cd ../grep
       - bash check_styletest_output.sh
