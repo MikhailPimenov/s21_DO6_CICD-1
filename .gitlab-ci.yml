@@ -24,12 +24,8 @@ my_style:
       - style_tag
     script:
       - cd src/cat
-      - touch clang_output.txt
-      - chmod 777 clang_output.txt
       - make check
       - cd ../grep
-      - touch clang_output.txt
-      - chmod 777 clang_output.txt
       - make check
       - cd ../cat
       - bash check_styletest_output.sh
