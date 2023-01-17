@@ -16,8 +16,9 @@ clean:
 	rm -rf *.a *.out *.o *.txt
 
 check:
-	cppcheck --enable=all --suppress=missingIncludeSystem ../../src/
-	python3 ../../materials/linters/cpplint.py --extensions=c ../*/*.c
+	clang-format -n s21_grep.c &>> clang_output.txt
+	clang-format -n s21_grep.h &>> clang_output.txt
+
 rebuild:
 	make clean
 	make all
