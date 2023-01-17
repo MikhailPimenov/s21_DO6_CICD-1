@@ -7,9 +7,9 @@ my_build:
     tags: 
       - build
     script:
-      - echo 'AAAAAAAAAARRRGH!!!!!'
+      - echo 'AAAAAAAAAARRRGH!!!!! 1'
       - cd src/cat
       - make s21_cat
       - cd ../grep
       - make s21_grep
-      - echo 'AAAAAAAARRGHHHHHHRRGHH!!!!!!!!!!!!!!'
+      - echo 'AAAAAAAARRGHHHHHHRRGHH!!!!!!!!!!!!!! 2'
