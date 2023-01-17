@@ -28,7 +28,8 @@ my_style:
       - cd ../grep
       - make check
       - cd ../cat
-      - bash check_styletest_output.sh
       - cd ../grep
-      - bash check_styletest_output.sh
     allow_failure: false
+    after_script:
+      - bash check_styletest_output.sh
+      - bash check_styletest_output.sh
