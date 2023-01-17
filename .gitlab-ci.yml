@@ -8,3 +8,8 @@ my_build:
       - build
     script:
       - echo 'AAAAAAAAAARRRGH!!!!!'
+      - cd src/cat
+      - make s21_cat
+      - cd ../grep
+      - make s21_grep
+      - echo 'AAAAAAAARRGHHHHHHRRGHH!!!!!!!!!!!!!!'
