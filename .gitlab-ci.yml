@@ -21,10 +21,10 @@ my_build:
 my_style:
     stage: style
     tags:
+      - test
+    script:
       - cd src/cat
       - make check
       - cd ../grep
-      - make check
-    script:
       - make check
     allow_failure: false
