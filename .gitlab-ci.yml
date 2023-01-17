@@ -4,5 +4,6 @@ stages:
 
 my_build:
     stage: build
+    tag: build
     script:
       - echo 'AAAAAAAAAARRRGH!!!!!'

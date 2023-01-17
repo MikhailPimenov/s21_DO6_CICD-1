@@ -1,8 +1,0 @@
-stages:
-    - build
-
-
-my_build:
-    stage: build
-    script:
-      - echo 'AAAAAAAAAARRRGH!!!!!'
