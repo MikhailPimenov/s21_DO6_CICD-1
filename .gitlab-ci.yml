@@ -29,9 +29,9 @@ my_style:
       - make check
       - cd ../cat
       - cd ../grep
-    allow_failure: false
-    after_script:
+    # after_script:
       - cd src/cat
       - bash check_styletest_output.sh
       - cd ../grep
       - bash check_styletest_output.sh
+    allow_failure: false
