@@ -140,13 +140,10 @@ int read_file(char *argv[], flg_t *flg) {
       last_sym = cur_c;
     }
 
-
-
-                fclose(file);
+    fclose(file);
   } else {
 
-
-          ret = -1;
+    ret = -1;
   }
   return ret;
 }
