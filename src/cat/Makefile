@@ -15,9 +15,6 @@ clean:
 	rm -rf s21_cat
 	rm -rf *.a *.out *.o *.txt
 
-check:
-	clang-format -n s21_cat.c &>> clang_output.txt
-
 rebuild:
 	make clean
 	make all
