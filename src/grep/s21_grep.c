@@ -149,7 +149,7 @@ void filework(struct flags *_flags, FILE *fp, regex_t reg, char *file) {
 
     if (_flags->is_o && match) {
       for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
-        printf("%c", text[i]);
+        // printf("%c", text[i]);
       }
       printf("\n");
     }
