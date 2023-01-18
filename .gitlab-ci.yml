@@ -34,10 +34,7 @@ my_style:
       - bash check_styletest_output.sh
       - cd ../grep
       - bash check_styletest_output.sh
-    # allow_failure: false
-
-
-
+    allow_failure: false
 
 my_test:
     stage: test
@@ -52,4 +49,4 @@ my_test:
       - bash check_test_output.sh
       - cd ../grep
       - bash check_test_output.sh
-    # allow_failure: false
+    allow_failure: false
