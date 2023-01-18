@@ -2,13 +2,13 @@
 
 if [ -f "diff.txt" ];
 then
-	if [ -s "diff.txt" ];
-	then
-		exit 1
-	else
-		echo "Difference is empty!"
-		echo "Tests are passed!"
-	fi
+	input="diff.txt"
+	while IFS= read -r line
+	do
+  		if [[ $line -ne "Files s21_cat.txt and cat.txt are identical"]]; then
+			exit 1
+		fi
+	done < "$input"
 else
 	echo "diff.txt file doesn't exist"
 	echo "Run the tests to generate the file"

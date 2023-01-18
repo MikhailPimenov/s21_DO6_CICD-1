@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f diff.txt
+
 ./s21_cat s21_cat.c >> s21_cat.txt
 cat s21_cat.c >> cat.txt
 diff -s s21_cat.txt cat.txt >> diff.txt
