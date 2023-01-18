@@ -24,9 +24,9 @@ my_style:
       - style_tag
     script:
       - cd src/cat
-      - make check
+      - clang-format -n s21_cat.c &>> clang_output.txt
       - cd ../grep
-      - make check
+      - clang-format -n s21_grep.c &>> clang_output.txt
       - cd ../cat
       - bash check_styletest_output.sh
       - cd ../grep
