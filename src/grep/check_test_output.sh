@@ -5,8 +5,8 @@ then
 	input="diff.txt"
 	while IFS= read -r line
 	do
-  		if [[ $line -ne "Files s21_grep.txt and grep.txt are identical"]]; then
-			exit 1
+  		if [[ $line != "Files s21_grep.txt and grep.txt are identical" ]] ; then
+			exit -1
 		fi
 	done < "$input"
 else
