@@ -1,4 +1,4 @@
-#!/ bin / bash
+#!/bin/bash
 
 if [ -f "clang_output.txt" ];
 then
