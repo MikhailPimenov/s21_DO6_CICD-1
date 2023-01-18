@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
   returnResult = Parsing(argc, argv, &_flags, pattern);
   if ((argc >= 3) && (returnResult != 1)) {
     grep_main(&_flags, argc, argv, pattern);
-    grep_main(&_flags, argc, argv, pattern);
   }
   return returnResult;
 }
