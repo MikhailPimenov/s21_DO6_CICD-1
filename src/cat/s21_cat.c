@@ -136,7 +136,7 @@ int read_file(char *argv[], flg_t *flg) {
           cur_c += 64;
         }
       }
-      printf("%c", cur_c);
+      // printf("%c", cur_c);
       last_sym = cur_c;
     }
 
