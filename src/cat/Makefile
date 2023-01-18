@@ -17,7 +17,6 @@ clean:
 
 check:
 	clang-format -n s21_cat.c &>> clang_output.txt
-	clang-format -n s21_cat.h &>> clang_output.txt
 
 rebuild:
 	make clean
