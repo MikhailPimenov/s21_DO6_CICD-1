@@ -2,7 +2,7 @@
 
 if [ -f "clang_output.txt" ];
 then
-	if [ -s clang_output.txt ];
+	if [ -s "clang_output.txt" ];
 	then
 		exit 1
 	else
