@@ -43,8 +43,7 @@ int Parsing(int argc, char *argv[], struct flags *_flags, char *pattern) {
       _flags->is_e = 1;
       snprintf(pattern, buff_size, optarg);
     } else if (i == 'i') {
-                  _flags->is_i = 1;
-
+      _flags->is_i = 1;
 
     } else if (i == 'v') {
       _flags->is_v = 1;
