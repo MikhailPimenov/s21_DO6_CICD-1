@@ -1,6 +1,6 @@
 CC= gcc -std=c11 -D_GNU_SOURCE
 CFLAGS= -Wall -Wextra -Werror
-CAT= s21_cat.c
+CAT=s21_cat.c
 
 all: s21_cat
 

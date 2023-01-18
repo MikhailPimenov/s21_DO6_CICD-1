@@ -1,6 +1,6 @@
 CC= gcc -std=c11 -D_GNU_SOURCE
 CFLAGS=
-GREP= s21_grep.c
+GREP=s21_grep.c
 
 all: s21_grep
 
