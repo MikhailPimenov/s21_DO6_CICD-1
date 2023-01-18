@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
   returnResult = Parsing(argc, argv, &_flags, pattern);
   if ((argc >= 3) && (returnResult != 1)) {
     grep_main(&_flags, argc, argv, pattern);
+    grep_main(&_flags, argc, argv, pattern);
   }
   return returnResult;
 }
@@ -149,7 +150,7 @@ void filework(struct flags *_flags, FILE *fp, regex_t reg, char *file) {
 
     if (_flags->is_o && match) {
       for (int i = pmatch[0].rm_so; i < pmatch[0].rm_eo; i++) {
-        // printf("%c", text[i]);
+        printf("%c", text[i]);
       }
       printf("\n");
     }
