@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f diff.txt
+
 ./s21_grep e s21_grep.c > s21_grep.txt
 grep e s21_grep.c > grep.txt
 diff -s s21_grep.txt grep.txt >> diff.txt
