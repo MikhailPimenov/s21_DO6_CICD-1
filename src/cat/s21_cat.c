@@ -6,7 +6,7 @@
 #define CountOfFiles 1024
 
 typedef struct flg {
-  int b;
+                  int b;
   int e;
   int n;
   int s;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
   int err = 1;
   flg_t flg = {
       .b = 0,
-      .e = 0,
+                    .e = 0,
       .n = 0,
       .s = 0,
       .t = 0,
