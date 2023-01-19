@@ -24,8 +24,8 @@ spawn ssh -tt user1@10.10.0.1 bash -c 'sudo mkdir shit'
 # send "yes\r"
 expect "user1@10.10.0.1's password:"
 send "555\r"
-expect "password for user1:"
-send "555\r"
+# expect "password for user1:"
+# send "555\r"
 interact
 
 
