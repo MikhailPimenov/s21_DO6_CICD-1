@@ -58,4 +58,4 @@ my_deploy:
       - deploy_tag
     script:
       - sudo expect copyToProduction.exp
-    allow_failure: false
+
