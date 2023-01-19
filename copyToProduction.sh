@@ -19,7 +19,7 @@
 
 # spawn ssh user1@10.10.0.1 "sh -c 'mv s21_cat /usr/local/bin/' && sh -c 'mv s21_grep /usr/local/bin/'"
 # spawn ssh -t user1@10.10.0.1 "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c 'sudo mv s21_grep /usr/local/bin/'"
-spawn ssh user1@10.10.0.1 "bash -c 'sudo mkdir shit'"
+spawn ssh user1@10.10.09898989898.1 "bash -c 'sudo mkdir shit'"
 # expect "Are you sure you want to continue connecting (yes/no/\[fingerprint\])?"
 # send "yes\r"
 # expect "user1@10.10.0.1's password:"
