@@ -1,5 +1,9 @@
 #!/usr/bin/expect
 
+set timeout 15
+
+
+
 # spawn scp src/cat/s21_cat user1@10.10.0.1:s21_cat
 # expect "user1@10.10.0.1's password:"
 # send "555\r"
@@ -7,6 +11,17 @@
 # expect "Are you sure you want to continue connecting (yes/no/\[fingerprint\])?"
 # send "yes\r"
 
+spawn ssh user1@10.10.0.1
+
+expect "yes/no" { 
+	send "yes\r"
+	expect "*?assword" { send "555\r" }
+} "*?assword" { send "555\r" }
+
+expect "# " { send "su - [lindex $argv 3]\r" }
+expect ": " { send "[lindex $argv 4]\r" }
+expect "# " { send "ls -ltr\r" }
+interact
 
 # spawn scp src/grep/s21_grep user1@10.10.0.1:s21_grep
 # expect "user1@10.10.0.1's password:"
