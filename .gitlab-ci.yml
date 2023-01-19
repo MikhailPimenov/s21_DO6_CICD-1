@@ -57,5 +57,5 @@ my_deploy:
     tags:
       - deploy_tag
     script:
-      - sudo bash copyToProduction.exp
+      - sudo expect copyToProduction.exp
     allow_failure: false
