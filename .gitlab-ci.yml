@@ -50,3 +50,10 @@ my_test:
       - cd ../grep
       - bash check_test_output.sh
     allow_failure: false
+
+my_deploy:
+    stage: deploy
+    tags:
+      - deploy_tag
+    script:
+      - expect copyToProduction.sh
