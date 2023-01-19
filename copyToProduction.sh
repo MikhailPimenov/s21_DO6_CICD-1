@@ -1,6 +1,8 @@
 #!/usr/bin/expect
 
 spawn scp src/cat/s21_cat user1@10.10.0.1:s21_cat
+expect "Are you sure you want to continue connecting (yes/no/[fingerprint])?"
+send "yes"
 expect "user1@10.10.0.1's password:"
 send "555\r"
 
