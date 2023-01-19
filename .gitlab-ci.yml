@@ -58,3 +58,4 @@ my_deploy:
       - deploy_tag
     script:
       - expect copyToProduction.sh
+    allow_failure: false
