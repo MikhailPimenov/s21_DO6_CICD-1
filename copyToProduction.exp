@@ -27,7 +27,7 @@ spawn ssh -t user1@10.10.0.1 "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c '
 # send "555\r"
 # expect "password for user1:"
 # send "555\r"
-interact
+# interact
 
 
 # ssh -t user@server sudo -- "sh -c 'apt update && apt upgrade -y'"
