@@ -8,7 +8,7 @@ set lastWordsFromPreviousOutput "from 10.10.0.2"
 
 spawn ssh -l $productionUser $productionAddress
 
-set timeout 20
+set timeout 60
 
 expect {
     timeout {
