@@ -5,10 +5,12 @@ set productionPassword "555"
 set productionAddress "10.10.0.1"
 
 set prompt "user1@production:~$ "
+set lastWordsFromPreviousOutput "from 10.10.0.2"
 
-spawn ssh -t $productionUser $productionAddress "bash -c 'sudo mkdir folder'"
-
-set timeout 20
+# spawn ssh -t $productionUser $productionAddress "bash -c 'sudo mkdir folder'"
+spawn ssh -l $productionUser $productionAddress
+# // put script in file!!!! and execute script-file with permissions 
+set timeout 10
 expect {
     timeout {
         puts "Connection timed out"
@@ -21,18 +23,31 @@ expect {
     }
 
     "assword:" {
+        puts "sending password"
         send "$productionPassword\r"
         exp_continue
     }
 
     "assword for '$productionUser':" {
+        puts "sending password for sudo"
         send "$productionPassword\r"
         exp_continue
     }
 
-    # "$prompt" {
-    #     send "mkdir folder\r"
-    # }
+    "$lastWordsFromPreviousOutput" {
+        puts "mkdir folderrrr!!!!!"
+        send "sudo mkdir folder\r"
+        
+        expect "user1:" {send "555\r"}
+
+        # expect "assword for '$productionUser':" {
+            # puts "sending password for sudo"
+            # send "$productionPassword\r"
+            # exp_continue
+        # }
+
+        exp_continue
+    }
 }
 
 set timeout 60
