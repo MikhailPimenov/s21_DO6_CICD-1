@@ -4,6 +4,8 @@ set productionUser "user1"
 set productionPassword "555"
 set productionAddress "10.10.0.1"
 
+set prompt "user1@production:~$ "
+
 spawn ssh -l $productionUser $productionAddress
 
 set timeout 10
@@ -23,7 +25,7 @@ expect {
         exp_continue
     }
 
-    "$ " {
+    $prompt {
         send "mkdir folder\r"
     }
 }
