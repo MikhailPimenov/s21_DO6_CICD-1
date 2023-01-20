@@ -71,6 +71,21 @@ expect {
         puts "s21_cat and s21_grep were copied but not moved to the final destination"
         exit 1
     }
+
+    # when connecting for the very first time
+    "yes/no" {                              
+        send "yes\r"
+        exp_continue
+    }
+
+    # sending password to establish connection
+    "assword:" {                                
+        puts "sending password"
+        send "$productionPassword\r"
+        exp_continue
+        exit 0
+    }
+
 }
 
 set timeout 120
