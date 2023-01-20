@@ -31,7 +31,7 @@ expect {
         puts "sending password for sudo"
         send "$productionPassword\r"
         expect eof
-        
+        puts "changing timeout"
         set timeout 0
         exit 0                          # good exit. We have input password after command had reqiured it and have made sure this command to finish
     }
