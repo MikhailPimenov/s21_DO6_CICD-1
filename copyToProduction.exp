@@ -1,4 +1,4 @@
-!/usr/bin/expect
+#!/usr/bin/expect
 
 set productionUser "user1"
 set productionPassword "555"
