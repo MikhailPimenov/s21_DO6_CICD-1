@@ -14,7 +14,7 @@ set lastWordsFromPreviousOutput "from 10.10.0.2"
 spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
 
 set timeout 10
-expext {
+expect {
     timeout {
         puts "Connection timed out"
         puts "s21_cat was not copied"
@@ -40,7 +40,7 @@ expext {
 spawn scp src/grep/s21_grep $productionUser@$productionAddress:s21_grep
 
 set timeout 10
-expext {
+expect {
     timeout {
         puts "Connection timed out"
         puts "s21_grep was not copied"
