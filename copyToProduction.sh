@@ -37,9 +37,9 @@ expect {
 
     "$lastWordsFromPreviousOutput" {
         puts "mkdir folderrrr!!!!!"
-        send "sudo mkdir folder\r"
+        trap send "sudo mkdir folder\r"
         # close
-        wait
+        # wait
         exit 0
         # expect "user1:" {send "555\r"}
         # puts "assword for $productionUser:"
