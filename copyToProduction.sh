@@ -7,7 +7,13 @@ set productionAddress "10.10.0.1"
 # find out mannually what is the last line and the last words
 set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
-spawn ssh -l $productionUser $productionAddress
+# spawn ssh -l $productionUser $productionAddress
+
+
+spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
+
+# spawn scp src/grep/s21_grep user1@10.10.0.1:s21_grep
+
 
 set timeout 120
 
@@ -32,28 +38,34 @@ expect {
         exp_continue
     }
 
-    # sending password to execute sudo command on remote machine
-    "assword for $productionUser:" {        
-        puts "sending password for sudo"
-        send "$productionPassword\r"
-        
-        expect {
-            "$ " {
-                puts "success"
-                # good exit. We have input password after command had reqiured it and have made sure this command \to finish
-                exit 0                      
-            }                         
-            "File exists" {
-                puts "File exists. Exiting"
-                exit 1
-            }
-        }
-    }
+    
 
     # after the connection is established commands are executed on remote machine
     "$lastWordsFromPreviousOutput" {        
-        puts "mkdir folderrrr!!!!!"
-        send "sudo mkdir folder\r"
+        # puts "mkdir folderrrr!!!!!"
+        # send "sudo mkdir folder\r"
+        
+        puts "moving executables!!!!!!"
+        send "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c 'sudo mv s21_grep /usr/local/bin/'"
+
+        # sending password to execute sudo command on remote machine
+        "assword for $productionUser:" {        
+        puts "sending password for sudo"
+        send "$productionPassword\r"
+        
+            expect {
+                "$ " {
+                    puts "success"
+                    # good exit. We have input password after command had reqiured it and have made sure this command \to finish
+                    exit 0                      
+                }                         
+                "File exists" {
+                    puts "File exists. Exiting"
+                    exit 1
+                }
+            }
+        }
+
 
         exp_continue
     }
