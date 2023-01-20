@@ -42,7 +42,7 @@ expect {
         # expect "user1:" {send "555\r"}
         # puts "assword for $productionUser:"
         # expect "assword for $productionUser:" {send "$productionPassword\r"}
-        set $exit_code 0
+        set exit_code 0
         exp_continue
     }
 }
