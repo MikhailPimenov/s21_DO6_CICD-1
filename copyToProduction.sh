@@ -5,6 +5,7 @@ set productionPassword "555"
 set productionAddress "10.10.0.1"
 
 # find out mannually what is the last line and the last words
+# 10.10.0.2 is address of vm with runner (where this script is executed)
 set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
 # spawn ssh -l $productionUser $productionAddress
@@ -12,8 +13,54 @@ set lastWordsFromPreviousOutput "from 10.10.0.2"
 
 spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
 
-# spawn scp src/grep/s21_grep user1@10.10.0.1:s21_grep
+set timeout 10
+expext {
+    timeout {
+        puts "Connection timed out"
+        puts "s21_cat was not copied"
+        exit 1
+    }
 
+    # when connecting for the very first time
+    "yes/no" {                              
+        send "yes\r"
+        exp_continue
+    }
+
+    # sending password to establish connection
+    "assword:" {                                
+        puts "sending password"
+        send "$productionPassword\r"
+        exp_continue
+        exit 0
+    }
+}
+
+
+spawn scp src/grep/s21_grep $productionUser@$productionAddress:s21_grep
+
+set timeout 10
+expext {
+    timeout {
+        puts "Connection timed out"
+        puts "s21_grep was not copied"
+        exit 1
+    }
+
+    # when connecting for the very first time
+    "yes/no" {                              
+        send "yes\r"
+        exp_continue
+    }
+
+    # sending password to establish connection
+    "assword:" {                                
+        puts "sending password"
+        send "$productionPassword\r"
+        exp_continue
+        exit 0
+    }
+}
 
 set timeout 120
 
