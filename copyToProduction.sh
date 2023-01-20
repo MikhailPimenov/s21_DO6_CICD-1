@@ -11,32 +11,37 @@ spawn ssh -l $productionUser $productionAddress
 
 set timeout 120
 
-expect {
+# order inside does not matter
+expect { 
     timeout {
         puts "Connection timed out"
-        exit 1                              # bad exit. Time is over end script was not executed
+        # bad exit. Time is over end script was not executed
+        exit 1                              
     }
 
-    "yes/no" {                              # when connecting for the very first time
+    # when connecting for the very first time
+    "yes/no" {                              
         send "yes\r"
         exp_continue
     }
 
-    "assword:" {                            # sending password to establish connection
+    # sending password to establish connection
+    "assword:" {                                
         puts "sending password"
         send "$productionPassword\r"
         exp_continue
     }
 
-    "assword for $productionUser:" {        # sending password to execute sudo command on remote machine
+    # sending password to execute sudo command on remote machine
+    "assword for $productionUser:" {        
         puts "sending password for sudo"
-        
         send "$productionPassword\r"
         
         expect {
             "$ " {
                 puts "success"
-                exit 0                      # good exit. We have input password after command had reqiured it and have made sure this command \to finish
+                # good exit. We have input password after command had reqiured it and have made sure this command \to finish
+                exit 0                      
             }                         
             "File exists" {
                 puts "File exists. Exiting"
@@ -45,7 +50,8 @@ expect {
         }
     }
 
-    "$lastWordsFromPreviousOutput" {        # after the connection is established commands are executed on remote machine
+    # after the connection is established commands are executed on remote machine
+    "$lastWordsFromPreviousOutput" {        
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
 
