@@ -6,7 +6,7 @@ set productionAddress "10.10.0.1"
 
 set prompt "user1@production:~$ "
 
-spawn ssh -l $productionUser $productionAddress "bash -c 'sudo -S mkdir folder'"
+spawn ssh -l -S $productionUser $productionAddress "bash -c 'sudo mkdir folder'"
 
 set timeout 20
 expect {
