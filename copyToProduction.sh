@@ -8,7 +8,6 @@ set productionAddress "10.10.0.1"
 # 10.10.0.2 is address of vm with runner (where this script is executed)
 set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
-# spawn ssh -l $productionUser $productionAddress
 
 
 spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
@@ -59,6 +58,18 @@ expect {
         send "$productionPassword\r"
         exp_continue
         exit 0
+    }
+}
+
+
+spawn ssh -l $productionUser $productionAddress
+
+set timeout 10
+expect {
+    timeout {
+        puts "Connection timed out"
+        puts "s21_cat and s21_grep were copied but not moved to the final destination"
+        exit 1
     }
 }
 
