@@ -4,7 +4,8 @@ set productionUser "user1"
 set productionPassword "555"
 set productionAddress "10.10.0.1"
 
-set lastWordsFromPreviousOutput "from 10.10.0.2"    # find it out mannually what is the last line and the last words
+# find out mannually what is the last line and the last words
+set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
 spawn ssh -l $productionUser $productionAddress
 
