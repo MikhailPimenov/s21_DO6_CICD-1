@@ -86,28 +86,29 @@ expect {
         exit 0
     }
 
+    # sending password to execute sudo command on remote machine
+    "assword for $productionUser:" {        
+    puts "sending password for sudo"
+    send "$productionPassword\r"
+
+        expect {
+            "$ " {
+                puts "success"
+                # good exit. We have input password after command had reqiured it and have made sure this command \to finish
+                exit 0                      
+            }                         
+            "permission denied" {
+                puts "permission denied"
+                exit 1
+            }
+        }
+    }
+
     # after the connection is established commands are executed on remote machine
     "$lastWordsFromPreviousOutput" {                
         puts "Moving s21_cat and s21_grep to their final destination"
         send "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c 'sudo mv s21_grep /usr/local/bin/'"
 
-        # sending password to execute sudo command on remote machine
-        "assword for $productionUser:" {        
-        puts "sending password for sudo"
-        send "$productionPassword\r"
-        
-            expect {
-                "$ " {
-                    puts "success"
-                    # good exit. We have input password after command had reqiured it and have made sure this command \to finish
-                    exit 0                      
-                }                         
-                "permission denied" {
-                    puts "permission denied"
-                    exit 1
-                }
-            }
-        }
         exp_continue
     }
 
