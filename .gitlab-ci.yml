@@ -58,4 +58,4 @@ my_deploy:
       - deploy_tag
     script:
       - expect copyToProduction.sh
-
+    when: manual
