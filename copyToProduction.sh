@@ -33,6 +33,7 @@ expect {
         puts "sending password for sudo"
         send "$productionPassword\r"
         # exp_continue
+        expect eof
         exit 0
     }
 
