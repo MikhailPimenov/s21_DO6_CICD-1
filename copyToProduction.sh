@@ -6,7 +6,7 @@ set productionAddress "10.10.0.1"
 
 set prompt "user1@production:~$ "
 
-spawn ssh -l $productionUser $productionAddress
+spawn ssh -l $productionUser $productionAddress "bash -c 'mkdir folder'"
 
 set timeout 20
 expect {
@@ -25,11 +25,9 @@ expect {
         exp_continue
     }
 
-    "$prompt" {
-        send "mkdir folder\r"
-        expect eof 
-        exit 0 
-    }
+    # "$prompt" {
+    #     send "mkdir folder\r"
+    # }
 }
 
 set timeout 60
