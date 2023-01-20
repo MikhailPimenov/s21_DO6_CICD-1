@@ -39,16 +39,7 @@ expect {
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
         
-        # expect eof
-        # close
-        # wait
-
-        # exit 0
-        # expect "user1:" {send "555\r"}
-        # puts "assword for $productionUser:"
-        # expect "assword for $productionUser:" {send "$productionPassword\r"}
-        # expect "$" { exit 0 }
-        # set exit_code 0
-        exp_continue
+        catch wait
+        exit 0
     }
 }
