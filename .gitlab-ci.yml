@@ -57,5 +57,5 @@ my_deploy:
     tags:
       - deploy_tag
     script:
-      - expect copyToProduction.exp
+      - expect copyToProduction.sh
 
