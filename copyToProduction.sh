@@ -27,6 +27,8 @@ expect {
 
     "$prompt" {
         send "mkdir folder\r"
+        expect "$prompt" 
+        exit 0 
     }
 }
 
