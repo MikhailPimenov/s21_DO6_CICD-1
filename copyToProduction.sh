@@ -4,46 +4,40 @@ set productionUser "user1"
 set productionPassword "555"
 set productionAddress "10.10.0.1"
 
-set prompt "user1@production:~$ "
 set lastWordsFromPreviousOutput "from 10.10.0.2"
 
-# spawn ssh -t $productionUser $productionAddress "bash -c 'sudo mkdir folder'"
 spawn ssh -l $productionUser $productionAddress
-# // put script in file!!!! and execute script-file with permissions 
-set timeout 10
-set exit_code 1
+
+set timeout 20
+
 expect {
     timeout {
         puts "Connection timed out"
-        exit $exit_code
+        exit 1                          # bad exit. Time is over end we didn't succeed
     }
 
-    "yes/no" {
+    "yes/no" {                          # when connecting for the very first time
         send "yes\r"
         exp_continue
     }
 
-    "assword:" {
+    "assword:" {                        # sending password to establish connection
         puts "sending password"
         send "$productionPassword\r"
         exp_continue
     }
 
-    "assword for $productionUser:" {
+    "assword for $productionUser:" {    # sending password to execute sudo command on remote machine
         puts "sending password for sudo"
         send "$productionPassword\r"
-        # exp_continue
         expect eof
-        exit 0
+        exit 0                          # good exit. We have input password after command had reqiured it and have made sure this command to finish
     }
 
-    "$lastWordsFromPreviousOutput" {
+    "$lastWordsFromPreviousOutput" {    # after the connection is established commands are executed on remote machine
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
-        
-        # expect "$ " {
-            # exit 0
-        # }
+
         exp_continue
     }
 }
