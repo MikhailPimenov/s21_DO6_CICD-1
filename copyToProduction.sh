@@ -39,7 +39,7 @@ expect {
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
         
-        catch wait
+        expect "$ "
         exit 0
     }
 }
