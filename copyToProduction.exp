@@ -9,5 +9,6 @@ set timeout 5
 spawn ssh -l $productionUser $productionAddress
 expect "yes/no" {send "yes\r"}
 expect "password:" {send "$productionPassword\r"}
-puts "mkdir folder"
+sleep 5
+send -- "mkdir folder"
 set timeout 10
