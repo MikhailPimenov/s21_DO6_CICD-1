@@ -37,12 +37,12 @@ expect {
 
     "$lastWordsFromPreviousOutput" {
         puts "mkdir folderrrr!!!!!"
-        send "sudo mkdir folder\r"
+        send -- "sudo mkdir folder\r"
         # close
         # expect "user1:" {send "555\r"}
         # puts "assword for $productionUser:"
         # expect "assword for $productionUser:" {send "$productionPassword\r"}
-        expect "$" { exit 0 }
+        # expect "$" { exit 0 }
         # set exit_code 0
         # exp_continue
     }
