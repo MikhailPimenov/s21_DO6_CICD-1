@@ -8,7 +8,7 @@ set lastWordsFromPreviousOutput "from 10.10.0.2"
 
 spawn ssh -l $productionUser $productionAddress
 
-set timeout 60
+set timeout 120
 
 expect {
     timeout {
@@ -32,7 +32,7 @@ expect {
         send "$productionPassword\r"
         expect eof
         
-        set timeout -1
+        set timeout 0
         exit 0                          # good exit. We have input password after command had reqiured it and have made sure this command to finish
     }
 
