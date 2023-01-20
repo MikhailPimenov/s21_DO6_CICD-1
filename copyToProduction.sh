@@ -11,10 +11,11 @@ set lastWordsFromPreviousOutput "from 10.10.0.2"
 spawn ssh -l $productionUser $productionAddress
 # // put script in file!!!! and execute script-file with permissions 
 set timeout 10
+set exit_code 1
 expect {
     timeout {
         puts "Connection timed out"
-        exit 1
+        exit $exit_code
     }
 
     "yes/no" {
@@ -28,7 +29,7 @@ expect {
         exp_continue
     }
 
-    "assword for '$productionUser':" {
+    "assword for $productionUser:" {
         puts "sending password for sudo"
         send "$productionPassword\r"
         exp_continue
@@ -38,14 +39,10 @@ expect {
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
         
-        expect "user1:" {send "555\r"}
-
-        # expect "assword for '$productionUser':" {
-            # puts "sending password for sudo"
-            # send "$productionPassword\r"
-            # exp_continue
-        # }
-
+        # expect "user1:" {send "555\r"}
+        # puts "assword for $productionUser:"
+        # expect "assword for $productionUser:" {send "$productionPassword\r"}
+        set $exit_code 0
         exp_continue
     }
 }
