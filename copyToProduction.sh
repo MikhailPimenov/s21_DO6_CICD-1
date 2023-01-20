@@ -64,7 +64,7 @@ expect {
 
 spawn ssh -l $productionUser $productionAddress
 
-set timeout 10
+set timeout 20
 expect {
     timeout {
         puts "Connection timed out"
@@ -86,39 +86,9 @@ expect {
         exit 0
     }
 
-}
-
-set timeout 120
-
-# order inside does not matter
-expect { 
-    timeout {
-        puts "Connection timed out"
-        # bad exit. Time is over end script was not executed
-        exit 1                              
-    }
-
-    # when connecting for the very first time
-    "yes/no" {                              
-        send "yes\r"
-        exp_continue
-    }
-
-    # sending password to establish connection
-    "assword:" {                                
-        puts "sending password"
-        send "$productionPassword\r"
-        exp_continue
-    }
-
-    
-
     # after the connection is established commands are executed on remote machine
-    "$lastWordsFromPreviousOutput" {        
-        # puts "mkdir folderrrr!!!!!"
-        # send "sudo mkdir folder\r"
-        
-        puts "moving executables!!!!!!"
+    "$lastWordsFromPreviousOutput" {                
+        puts "Moving s21_cat and s21_grep to their final destination"
         send "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c 'sudo mv s21_grep /usr/local/bin/'"
 
         # sending password to execute sudo command on remote machine
@@ -132,14 +102,14 @@ expect {
                     # good exit. We have input password after command had reqiured it and have made sure this command \to finish
                     exit 0                      
                 }                         
-                "File exists" {
-                    puts "File exists. Exiting"
+                "permission denied" {
+                    puts "permission denied"
                     exit 1
                 }
             }
         }
-
-
         exp_continue
     }
+
 }
+
