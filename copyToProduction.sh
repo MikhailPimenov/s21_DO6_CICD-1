@@ -32,15 +32,17 @@ expect {
     "assword for $productionUser:" {
         puts "sending password for sudo"
         send "$productionPassword\r"
-        exp_continue
+        # exp_continue
+        exit 0
     }
 
     "$lastWordsFromPreviousOutput" {
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
         
-        expect "$ " {
-            exit 0
-        }
+        # expect "$ " {
+            # exit 0
+        # }
+        exp_continue
     }
 }
