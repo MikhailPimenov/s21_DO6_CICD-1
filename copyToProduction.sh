@@ -4,11 +4,28 @@ set productionUser "user1"
 set productionPassword "555"
 set productionAddress "10.10.0.1"
 
-set timeout 10
-
 spawn ssh -l $productionUser $productionAddress
-expect "yes/no" {send "yes\r"}
-expect "password:" {send "$productionPassword\r"}
 
-expect "$ " {send "mkdir folder\r"}
+set timeout 10
+expect {
+    timeout {
+        puts "Connection timed out"
+        exit 1
+    }
+
+    "yes/no" {
+        send "yes\r"
+        exp_continue
+    }
+
+    "assword:" {
+        send "$productionPassword\r"
+        exp_continue
+    }
+
+    "$ " {
+        send "mkdir folder\r"
+    }
+}
+
 set timeout 60
