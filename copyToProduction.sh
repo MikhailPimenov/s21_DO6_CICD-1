@@ -9,10 +9,11 @@ set productionAddress "10.10.0.1"
 set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
 
-
+# copying s21_cat
 spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
 
 set timeout 10
+
 expect {
     timeout {
         puts "Connection timed out"
@@ -39,6 +40,7 @@ expect {
 spawn scp src/grep/s21_grep $productionUser@$productionAddress:s21_grep
 
 set timeout 10
+
 expect {
     timeout {
         puts "Connection timed out"
@@ -61,7 +63,7 @@ expect {
     }
 }
 
-
+# moving both s21_cat and s21_grep
 spawn ssh -l $productionUser $productionAddress
 
 set timeout 20
@@ -98,7 +100,7 @@ expect {
                 exit 0                      
             }                         
             "permission denied" {
-                puts "permission denied"
+                puts "permission denied. Perhaps sudo password is wrong"
                 exit 1
             }
         }
@@ -107,10 +109,8 @@ expect {
     # after the connection is established commands are executed on remote machine
     "$lastWordsFromPreviousOutput" {                
         puts "Moving s21_cat and s21_grep to their final destination"
-        send "sh -c 'sudo mv s21_cat /usr/local/bin/' && sh -c 'sudo mv s21_grep /usr/local/bin/'"
+        send "sudo bash -c 'mv s21_cat /usr/local/bin/' && sudo bash -c 'mv s21_grep /usr/local/bin/'\r"
 
         exp_continue
     }
-
 }
-
