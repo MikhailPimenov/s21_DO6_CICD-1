@@ -39,7 +39,8 @@ expect {
         puts "mkdir folderrrr!!!!!"
         send "sudo mkdir folder\r"
         
-        expect "$ "
-        exit 0
+        expect "$ " {
+            exit 0
+        }
     }
 }
