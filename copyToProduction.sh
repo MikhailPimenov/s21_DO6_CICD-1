@@ -34,6 +34,11 @@ expect {
         exp_continue
         exit 0
     }
+
+    "lost connection" {
+        puts "Something whent wrong. Perhaps there are issues with the production server"
+        exit 1
+    }
 }
 
 
@@ -60,6 +65,11 @@ expect {
         send "$productionPassword\r"
         exp_continue
         exit 0
+    }
+
+    "lost connection" {
+        puts "Something whent wrong. Perhaps there are issues with the production server"
+        exit 1
     }
 }
 
