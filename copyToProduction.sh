@@ -8,6 +8,8 @@ set productionAddress "10.10.0.1"
 # 10.10.0.2 is address of vm with runner (where this script is executed)
 set lastWordsFromPreviousOutput "from 10.10.0.2"    
 
+# sometimes ubuntu suggests to upgrade after the connection is established
+set lastWordsFromPreviousOutput2 "Run 'do-release-upgrade' to upgrade to it."
 
 # copying s21_cat
 spawn scp src/cat/s21_cat $productionUser@$productionAddress:s21_cat
@@ -118,6 +120,14 @@ expect {
 
     # after the connection is established commands are executed on remote machine
     "$lastWordsFromPreviousOutput" {                
+        puts "Moving s21_cat and s21_grep to their final destination"
+        send "sudo bash -c 'mv s21_cat /usr/local/bin/' && sudo bash -c 'mv s21_grep /usr/local/bin/'\r"
+
+        exp_continue
+    }
+
+    # after the connection is established commands are executed on remote machine
+    "$lastWordsFromPreviousOutput2" {                
         puts "Moving s21_cat and s21_grep to their final destination"
         send "sudo bash -c 'mv s21_cat /usr/local/bin/' && sudo bash -c 'mv s21_grep /usr/local/bin/'\r"
 
