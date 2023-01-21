@@ -20,7 +20,7 @@ my_build:
           - src/grep/s21_grep
         expire_in: 30 days
     after_script:
-      - bash notify.sh
+      - bash notify.sh 
 
 my_style:
     stage: style
@@ -38,6 +38,8 @@ my_style:
       - cd ../grep
       - bash check_styletest_output.sh
     allow_failure: false
+    after_script:
+      - bash notify.sh
 
 my_test:
     stage: test
@@ -53,6 +55,8 @@ my_test:
       - cd ../grep
       - bash check_test_output.sh
     allow_failure: false
+    after_script:
+      - bash notify.sh
 
 my_deploy:
     stage: deploy
@@ -61,3 +65,5 @@ my_deploy:
     script:
       - expect copyToProduction.sh
     when: manual
+    after_script:
+      - bash notify.sh
