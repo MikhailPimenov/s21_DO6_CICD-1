@@ -144,7 +144,7 @@ void filework(struct flags *_flags, FILE *fp, regex_t reg, char *file) {
       match = 1;
     if (match && !_flags->is_l && !_flags->is_c && _flags->is_n)
       printf("%d:", nline);
-    if (match && !_flags->is_l && !_flags->is_c && !_flags->is_o)
+    // if (match && !_flags->is_l && !_flags->is_c && !_flags->is_o)
       // printf("%s", text);
 
     if (_flags->is_o && match) {
