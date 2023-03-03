@@ -1,5 +1,5 @@
 #!/bin/bash
-
+exit 0
 #  user id. Can be obtained using @GetMyIdBot
 TELEGRAM_USER_ID=722828510
 #  user id. Is obtained when creating bot via @BotFather
