@@ -66,5 +66,6 @@ my_deploy:
       - expect copyToProduction.sh
       - expect checkIfCopied.sh
     when: manual
+    allow_failure: false
     after_script:
       - bash notify.sh
