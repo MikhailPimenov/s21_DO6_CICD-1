@@ -16,7 +16,7 @@ set successCat "s21_cat is found in /usr/local/bin/!"
 set failCat "s21_cat is NOT found in /usr/local/bin/!"
 set successGrep "s21_grep is found in /usr/local/bin/!"
 set failGrep "s21_grep is NOT found in /usr/local/bin/!"
-spawn ssh $productionUser@$productionAddress test -f "/usr/local/bin/s21_cat" && echo $successCat || echo $failCat
+spawn ssh $productionUser@$productionAddress test -f "/usr/local/bin/s21_cat1" && echo $successCat || echo $failCat
 
 set resultCat "found"
 
