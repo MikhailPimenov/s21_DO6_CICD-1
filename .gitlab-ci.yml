@@ -20,7 +20,6 @@ my_build:
           - src/grep/s21_grep
         expire_in: 30 days
     after_script:
-      - chmod 777 notify.sh
       - bash notify.sh 
 
 my_style:
