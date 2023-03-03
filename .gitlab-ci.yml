@@ -64,7 +64,7 @@ my_deploy:
       - deploy_tag
     script:
       - expect copyToProduction.sh
-      - bash checkIfCopied.sh
+      - expect checkIfCopied.sh
     when: manual
     after_script:
       - bash notify.sh
