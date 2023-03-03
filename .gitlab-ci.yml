@@ -63,8 +63,8 @@ my_deploy:
     tags:
       - deploy_tag
     script:
-      - expect copyToProduction.sh
-      - expect checkIfCopied.sh
+      - expect copy_to_production.sh
+      - expect check_if_copied.sh
     when: manual
     allow_failure: false
     after_script:
